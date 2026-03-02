@@ -21,4 +21,29 @@ def test_getPetById_id():
     header = {"content - type": "application / json"}
     response = requests.get(url, verify=False, headers=header)
     data = response.json()
-    assert data["id"] == 20
+    assert int(data["id"]) == 20
+
+# Test adding new pet to the store
+
+def test_addPetToTheStore():
+    url = testURI
+    header = {"content - type": "application / json"}
+    payload = dict(id=120, category={
+        "id": 1,
+        "name": "Domastik"
+    }, name="Azazel", photoUrls=[
+        "string"
+    ], tags=[
+        {
+            "id": 10,
+            "name": "Devil"
+        }
+    ], status="available")
+    response = requests.post(url, verify=False, headers=header, json=payload)
+    data = response.json()
+    assert int(data["id"]) == 120
+    assert len(data) > 0
+    assert response.status_code == 200
+    print(data)
+
+
