@@ -11,6 +11,7 @@ def getAPIData(url):
     return data, response.status_code, timeTaken
 
 
+# Test updating a pet
 def putData(url, body):
     headers = {"content - type": "application/json"}
     print("Request url ", url)
@@ -21,4 +22,11 @@ def putData(url, body):
     return data, timeTaken, response.status_code
 
 
-
+# Put API call
+def deleteData(url):
+    headers = {"content - type": "application/json"}
+    print("Request url ", url)
+    response = requests.delete(url, verify=False, headers=headers)
+    data = response.json()
+    timeTaken = response.elapsed.total_seconds()
+    return data, timeTaken, response.status_code

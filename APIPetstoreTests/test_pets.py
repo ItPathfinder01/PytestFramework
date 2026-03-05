@@ -3,8 +3,9 @@ from utils.myconfigparser import *
 
 # testURI = "https://petstore.swagger.io/v2/pet/"
 testURI = getPetAPIUrl()
-petId = "110"
+petId = "120"
 
+# Get by ID
 def test_GetPetById_response():
     url = testURI + petId
     data, status, time = getAPIData(url)
@@ -13,10 +14,17 @@ def test_GetPetById_response():
     assert status == 200
     print("Time taken ", time)
 
-# Test updating a pet
+# Update API call
 def test_updatingPet():
     payload = {"id": int(petId), "name": "Musia", "status": "wild"}
     data, status, time = putData(testURI, payload)
     assert data["id"] == int(petId)
     print(data)
 
+#Delete API call
+def test_deletePet():
+    url = testURI + petId
+    data, status, time = deleteData(url)
+    assert data["message"] == petId
+    assert data["code"] == 200
+    print(data)
