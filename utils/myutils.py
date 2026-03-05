@@ -11,5 +11,14 @@ def getAPIData(url):
     return data, response.status_code, timeTaken
 
 
+def putData(url, body):
+    headers = {"content - type": "application/json"}
+    print("Request url ", url)
+    print("Body ", json.dumps(body, indent=4))
+    response = requests.put(url, verify=False, json=body, headers=headers)
+    data = response.json()
+    timeTaken = response.elapsed.total_seconds()
+    return data, timeTaken, response.status_code
+
 
 
