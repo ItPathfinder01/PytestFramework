@@ -1,7 +1,6 @@
 from utils.myutils import *
 from utils.myconfigparser import *
 
-# testURI = "https://petstore.swagger.io/v2/pet/"
 testURI = getPetAPIUrl()
 petId = "120"
 
