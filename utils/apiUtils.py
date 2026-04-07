@@ -15,3 +15,13 @@ def postApiData(url, body):
     print("\n/ReqBody:" + json.dumps(body))
     return requests.post(url, verify=False, json=body, headers=headers)
 
+def daleteApiData(url, body, opHeader=None):
+    headers = {'Content-Type': 'application/json'}
+    headers = (headers | opHeader) if isinstance(opHeader, dict) else headers
+    print("\n/ReqUrl:" + url)
+    print("\n/ReqBody:" + json.dumps(body))
+    response = requests.delete(url, verify=False, json=body, headers=headers)
+    return response
+
+
+
