@@ -1,9 +1,11 @@
+import allure
 import requests, json
 
 testURI = "https://petstore.swagger.io/v2/pet/"
 petId = "20"
 
 # test valid response or the response is not empty
+@allure.step("Get pet by id test")
 def test_getPetById_response():
     url = testURI + petId
     header = {"content - type": "application / json"}
